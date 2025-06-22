@@ -30,8 +30,13 @@ export async function getBotReply(
 
     const reply = response.choices[0]?.message?.content;
 
-    console.log('✅ GPT 응답:', reply); // 디버깅용
-
+    console.log('✅ GPT 응답:', reply); // 
+    console.log('✅ 환경 변수 상태:', {
+      raw: process.env.OPENAI_API_KEY,
+      isSet: !!process.env.OPENAI_API_KEY,
+      length: process.env.OPENAI_API_KEY?.length,
+    });
+    
     return reply ?? '죄송합니다. 답변을 생성하지 못했어요.';
   } catch (error) {
     console.error('❌ OpenAI API 요청 실패:', error);
